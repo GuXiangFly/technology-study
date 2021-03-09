@@ -1,0 +1,5 @@
+<beans xmlns="http://www.springframework.org/schema/beans">
+    <bean id="teacher" class="cn.guxiangfly.pojo.Teacher">
+        <property name="name" value="guxiang"></property>
+    </bean>
+</beans>

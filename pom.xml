@@ -22,6 +22,7 @@
         <module>springcloud-study</module>
         <module>flink-java-learn</module>
         <module>UserBehaviorAnalysis</module>
+        <module>spark3-learn</module>
         <!--        <module>cat-study</module>-->
     </modules>
 
