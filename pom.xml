@@ -23,6 +23,7 @@
         <module>flink-java-learn</module>
         <module>UserBehaviorAnalysis</module>
         <module>spark3-learn</module>
+        <module>gmall0820-parent</module>
         <!--        <module>cat-study</module>-->
     </modules>
 
