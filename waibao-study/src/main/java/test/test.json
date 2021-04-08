@@ -1,0 +1,66 @@
+{
+  "type": "datax",
+  "content": [
+    {
+      "reader": {
+        "name": "hivereader",
+        "parameter": {
+          "sql": "select concat(t1.mt_poi_id,'_',t1.jd_poi_id,'_',t1.company_id) as hiveSyncKey, mt_poi_id, jd_poi_id, company_id,group_head_id,min_dist,similar_score,top_n  from mart_datamining.app_gh_comp_match_model_output_v1_s t1 where dt='20210317';"
+        }
+      },
+      "writer": {
+        "name": "elasticsearchwriter",
+        "parameter": {
+          "ignoreWriteError": True,
+          "actionType": "upsert",
+          "dsnName": "es_grocery_mallgrouphead_bd_crm",
+          "accessId": "com.sankuai.grocerycrm.dataprocessing",
+          "accessKey": "EA3043460A5D6BDC63F6277EBF17C6CA",
+          "index": "grocery_recommend_mt_and_jd_mapping",
+          "type": "info",
+          "batchSize": 1000,
+          "cleanup": False,
+          "debugClusterGroup": "es_grouphead_bd_crm_offlinedsn",
+          "debugClusterName": "mallgrouphead_bd-crm",
+          "debugAccessId": "com.sankuai.grocerycrm.dataprocessing",
+          "debugAccessKey": "EA3043460A5D6BDC63F6277EBF17C6CA",
+          "column": [
+            {
+              "name": "hiveSyncKey",
+              "type": "text",
+              "key": true
+            },
+            {
+              "name": "mt_poi_id",
+              "type": "keyword"
+            },
+            {
+              "name": "jd_poi_id",
+              "type": "keyword"
+            },
+            {
+              "name": "company_id",
+              "type": "integer"
+            },
+            {
+              "name": "group_head_id",
+              "type": "long"
+            },
+            {
+              "name": "min_dist",
+              "type": "double"
+            },
+            {
+              "name": "similar_score",
+              "type": "double"
+            },
+            {
+              "name": "top_n",
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

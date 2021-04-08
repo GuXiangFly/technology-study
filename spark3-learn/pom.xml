@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spark-core</module>
+        <module>spark-springboot</module>
     </modules>
 
 
