@@ -14,7 +14,6 @@ import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
-import org.apache.flink.api.java.tuple.Tuple;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.TimeCharacteristic;
@@ -37,7 +36,7 @@ import java.util.Random;
  * @Author: wushengran on 2020/11/16 11:46
  * @Version: 1.0
  */
-public class PageView {
+public class PageView_v2 {
     public static void main(String[] args) throws Exception{
         // 1. 创建执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -45,7 +44,7 @@ public class PageView {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         // 2. 读取数据，创建DataStream
-        URL resource = PageView.class.getResource("/UserBehavior.csv");
+        URL resource = PageView_v2.class.getResource("/UserBehavior.csv");
         DataStream<String> inputStream = env.readTextFile(resource.getPath());
 
         // 3. 转换为POJO，分配时间戳和watermark
@@ -61,40 +60,37 @@ public class PageView {
                     }
                 });
 
-        // 4. 分组开窗聚合，得到每个窗口内各个商品的count值
-        SingleOutputStreamOperator<Tuple2<String, Long>> pvResultStream0 =
-                dataStream
-                .filter(data -> "pv".equals(data.getBehavior()))    // 过滤pv行为
+
+        SingleOutputStreamOperator<Tuple2<String, Long>> pvResultStream0 = dataStream.filter(data -> "pv".equals(data.getBehavior()))
                 .map(new MapFunction<UserBehavior, Tuple2<String, Long>>() {
                     @Override
                     public Tuple2<String, Long> map(UserBehavior value) throws Exception {
                         return new Tuple2<>("pv", 1L);
                     }
                 })
-                .keyBy(0)    // 按商品ID分组
-                .timeWindow(Time.hours(1))    // 开1小时滚动窗口
+                .keyBy(0)//以数字表达位置的写法，只有在元祖里面有效
+                .timeWindow(Time.hours(1))
                 .sum(1);
 
-        //  并行任务改进，设计随机key，解决数据倾斜问题
-        SingleOutputStreamOperator<PageViewCount> pvStream = dataStream.filter(data -> "pv".equals(data.getBehavior()))
-                .map(new MapFunction<UserBehavior, Tuple2<Integer, Long>>() {
+        pvResultStream0.print("pvResultStream0");
+
+
+
+        dataStream.filter(data -> "pv".equals(data.getBehavior()))
+                .map(new MapFunction<UserBehavior, Tuple2<Integer,Long>>() {
                     @Override
                     public Tuple2<Integer, Long> map(UserBehavior value) throws Exception {
                         Random random = new Random();
+
                         return new Tuple2<>(random.nextInt(10), 1L);
                     }
                 })
-                .keyBy(data -> data.f0)
+                .keyBy(data->data.f0)
                 .timeWindow(Time.hours(1))
-                .aggregate(new PvCountAgg(), new PvCountResult());
+                .aggregate()
 
-        // 将各分区数据汇总起来
-        DataStream<PageViewCount> pvResultStream = pvStream
-                .keyBy(PageViewCount::getWindowEnd)
-                .process(new TotalPvCount());
-//                .sum("count");
 
-        pvResultStream.print();
+
 
         env.execute("pv count job");
     }
