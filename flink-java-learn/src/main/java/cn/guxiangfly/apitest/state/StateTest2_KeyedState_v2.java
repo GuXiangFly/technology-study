@@ -8,8 +8,12 @@ import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.api.common.time.Time;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import sun.rmi.runtime.Log;
+
+import java.util.List;
 
 
 public class StateTest2_KeyedState_v2 {
@@ -36,9 +40,11 @@ public class StateTest2_KeyedState_v2 {
         env.execute();
     }
 
-    public static class MyKeyCountMapper extends RichMapFunction<SensorReading, SensorReadingCount> {
+    public static class MyKeyCountMapper extends RichMapFunction<SensorReading, SensorReadingCount> implements ListCheckpointed {
 
         private ValueState<Integer> keyCountState;
+
+
 
         @Override
         public void open(Configuration parameters) throws Exception {
@@ -71,6 +77,17 @@ public class StateTest2_KeyedState_v2 {
             sensorReadingCount.setCount(countStateValue);
             sensorReadingCount.setKey(value.getId());
             return sensorReadingCount;
+        }
+
+        @Override
+        public List snapshotState(long checkpointId, long timestamp) throws Exception {
+            System.out.println("snapshotState==action");
+            return null;
+        }
+
+        @Override
+        public void restoreState(List state) throws Exception {
+            System.out.println("restoreState==action");
         }
     }
 }

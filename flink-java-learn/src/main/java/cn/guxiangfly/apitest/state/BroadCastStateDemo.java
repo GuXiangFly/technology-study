@@ -11,7 +11,6 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple4;
 import org.apache.flink.api.java.tuple.Tuple6;
 import org.apache.flink.api.java.typeutils.TupleTypeInfo;
-import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.BroadcastConnectedStream;
 import org.apache.flink.streaming.api.datastream.BroadcastStream;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -20,7 +19,6 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.ProcessFunction;
 import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction;
-import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
 import org.apache.flink.util.Collector;
 
 
@@ -73,6 +71,9 @@ public class BroadCastStateDemo {
                 >() {
 
 
+            /**
+             * 这里只能对broadcastState进行读取操作
+             */
             @Override
             public void processElement(Tuple4<String, String, String, Integer> value, ReadOnlyContext ctx, Collector<Tuple6<String, String, String, Integer, String, Integer>> out) throws Exception {
 
@@ -89,6 +90,9 @@ public class BroadCastStateDemo {
 
             }
 
+            /**
+             * 这里对broadcastState进行更新操作
+             */
             @Override
             public void processBroadcastElement(Tuple2<String, Tuple2<String, Integer>> value, Context ctx, Collector<Tuple6<String, String, String, Integer, String, Integer>> out) throws Exception {
                 BroadcastState<String, Tuple2<String, Integer>> broadcastState = ctx.getBroadcastState(broadCastStateDesc);

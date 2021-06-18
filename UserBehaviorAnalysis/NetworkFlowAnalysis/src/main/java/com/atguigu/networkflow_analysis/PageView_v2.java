@@ -76,18 +76,6 @@ public class PageView_v2 {
 
 
 
-        dataStream.filter(data -> "pv".equals(data.getBehavior()))
-                .map(new MapFunction<UserBehavior, Tuple2<Integer,Long>>() {
-                    @Override
-                    public Tuple2<Integer, Long> map(UserBehavior value) throws Exception {
-                        Random random = new Random();
-
-                        return new Tuple2<>(random.nextInt(10), 1L);
-                    }
-                })
-                .keyBy(data->data.f0)
-                .timeWindow(Time.hours(1))
-                .aggregate()
 
 
 

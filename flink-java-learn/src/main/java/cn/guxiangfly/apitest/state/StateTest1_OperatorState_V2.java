@@ -10,9 +10,13 @@ package cn.guxiangfly.apitest.state;/**
 
 import cn.guxiangfly.apitest.beans.SensorReading;
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.functions.RichMapFunction;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.contrib.streaming.state.RocksDBStateBackend;
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+import org.apache.flink.streaming.api.environment.CheckpointConfig;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 import java.util.Collections;
@@ -28,6 +32,11 @@ import java.util.List;
 public class StateTest1_OperatorState_V2 {
     public static void main(String[] args) throws Exception{
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setStateBackend( new RocksDBStateBackend("file:///Users/mtdp/dev/softwareworkspace/flinkdevhome/savepointhome/StateTest1_OperatorState_V2_checkpoint"));
+
+        //设置canceljob后不删除checkpoint数据
+       env.getCheckpointConfig().enableExternalizedCheckpoints(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
+        env.enableCheckpointing(3000);
         env.setParallelism(1);
 
         // socket文本流
@@ -53,9 +62,14 @@ public class StateTest1_OperatorState_V2 {
      * 泛型：第一个输入，第二个输出
      * ListCheckpointed 就是保存列表状态
      */
-    public static class MyCountMapper implements MapFunction<SensorReading, Integer>, ListCheckpointed<Integer>{
+    public static class MyCountMapper extends RichMapFunction<SensorReading, Integer> implements ListCheckpointed<Integer>{
         // 定义一个本地变量，作为算子状态
         private Integer count = 0;
+
+        @Override
+        public void open(Configuration parameters) throws Exception {
+            System.out.println("MyCountMapper open ===action");
+        }
 
         @Override
         public Integer map(SensorReading value) throws Exception {
@@ -72,6 +86,7 @@ public class StateTest1_OperatorState_V2 {
          */
         @Override
         public List<Integer> snapshotState(long checkpointId, long timestamp) throws Exception {
+            System.out.println("snapshotState==action");
             return Collections.singletonList(count);
         }
 
@@ -85,6 +100,7 @@ public class StateTest1_OperatorState_V2 {
             for( Integer num: state ) {
                 count += num;
             }
+            System.out.println("restoreState==action");
         }
     }
 }
