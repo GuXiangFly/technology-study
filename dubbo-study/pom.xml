@@ -15,6 +15,7 @@
         <module>user-service-provider</module>
         <module>dubbo-interface</module>
         <module>user-service-consumer</module>
+        <module>boot-user-service-provider</module>
     </modules>
 
     <dependencies>
