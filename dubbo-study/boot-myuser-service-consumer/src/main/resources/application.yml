@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+dubbo:
+  # 1、指定当前服务/应用的名字（同样的服务名字相同，不要和别的服务同名）
+  application:
+    name: order-consumer
+  # 2.指定注册中心的位置
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181?init.timeout=60000
+    group: dev
+    client: curator
+    # 超时时间设置长点，设置为 5s 可能连不上
+    timeout: 50000
+  # 3.指定通信规则（通信协议和通信端口）
+  protocol:
+    name: dubbo
+    port: 20881
+  # 连接监控中心
+  monitor:
+    protocol: registry
+#  config-center:
+#    parameters:
+#      init:
+#        timeout: 10000
