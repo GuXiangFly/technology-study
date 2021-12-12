@@ -1,9 +1,10 @@
 package cn.guxiangfly.kafkalearn.kafka.wechat.service;
 
+import cn.guxiangfly.kafkalearn.kafka.wechat.conf.WechatTemplateProperties;
+import cn.guxiangfly.kafkalearn.kafka.wechat.utils.FileUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.imooc.jiangzh.kafka.wechat.conf.WechatTemplateProperties;
-import com.imooc.jiangzh.kafka.wechat.utils.FileUtils;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;

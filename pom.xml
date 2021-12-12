@@ -24,9 +24,6 @@
         <module>UserBehaviorAnalysis</module>
         <module>spark3-learn</module>
         <module>gmall0820-parent</module>
-        <module>dubbo-study</module>
-        <module>user-service-provider</module>
-        <module>user-service-consumer</module>
         <!--        <module>cat-study</module>-->
     </modules>
 

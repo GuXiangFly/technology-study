@@ -37,7 +37,7 @@ public class WindowTest1_TimeWindow_v2 {
 //        DataStream<String> inputStream = env.readTextFile("/Users/mtdp/dev/ideaworkspace/guxiangwork/technology-study/flink-java-learn/src/main/resources/sensor.txt");
 
         // socket文本流
-        DataStream<String> inputStream = env.socketTextStream("localhost", 7777);
+        DataStream<String> inputStream = env.socketTextStream("localhost", 8777);
 
         DataStream<SensorReading> dataStream = inputStream.map(line -> {
             System.out.println("input:" + line);
@@ -80,6 +80,16 @@ public class WindowTest1_TimeWindow_v2 {
 
         resultStream2.print("result2");
 
+
+//        dataStream.keyBy("clue_id").timeWindow(Time.days(1),Time.hours(-8)).apply(new WindowFunction<SensorReading, Integer, Integer, TimeWindow>() {
+//
+//            @Override
+//            public void apply(Integer integer, TimeWindow window, Iterable<SensorReading> input, Collector<Integer> out) throws Exception {
+//
+//            }
+//        })
+
         env.execute();
     }
+
 }

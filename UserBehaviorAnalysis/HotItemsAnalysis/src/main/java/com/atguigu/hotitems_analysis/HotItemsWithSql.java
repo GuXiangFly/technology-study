@@ -90,7 +90,7 @@ public class HotItemsWithSql {
                 " where row_num <= 5 ");
 
 //        tableEnv.toRetractStream(resultTable, Row.class).print();
-        tableEnv.toRetractStream(resultSqlTable, Row.class).print();
+        tableEnv.toRetractStream(resultSqlTable, Row.class).print("resultSqlTable");
 
         env.execute("hot items with sql job");
     }

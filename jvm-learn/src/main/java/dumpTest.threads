@@ -1,0 +1,40 @@
+Thread 0x7b8700af0
+
+  locals:
+
+Thread 0x7b87013d8
+
+  locals:
+
+Thread 0x7b8701550
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:144)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:165)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:216)
+
+  locals:
+    objectId=0x7b87016e0, line=1
+    objectId=0x7b87016d0, line=1
+    objectId=0x7b87016e0, line=2
+    objectId=0x7b8701550, line=3
+    objectId=0x7b8701700, line=3
+
+Thread 0x7b870a6a8
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0x7b870a820, line=1
+    objectId=0x7b870a820, line=2
+    objectId=0x7b870a6a8, line=3
+
+Thread 0x7b870aaa8
+  at java.lang.Thread.sleep(J)V (Native Method)
+  at OOMCreateTest.main([Ljava/lang/String;)V (OOMCreateTest.java:12)
+
+  locals:
+    objectId=0x7b870a8f0, line=1
+    objectId=0x7b870a900, line=1
+

@@ -20,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.Time;
 import java.util.List;
 

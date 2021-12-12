@@ -38,7 +38,7 @@ public class KafkaProducerUtil {
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 
         // 用缓冲方式读取文本
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("D:\\Projects\\BigData\\UserBehaviorAnalysis\\HotItemsAnalysis\\src\\main\\resources\\UserBehavior.csv"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("UserBehaviorAnalysis/HotItemsAnalysis/src/main/resources/UserBehavior.csv"));
         String line;
         while( (line = bufferedReader.readLine()) != null ){
             ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topic, line);

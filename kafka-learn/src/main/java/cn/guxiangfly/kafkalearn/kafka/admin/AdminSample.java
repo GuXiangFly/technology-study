@@ -14,16 +14,16 @@ public class AdminSample {
     public final static String TOPIC_NAME="jiangzh-topic";
 
     public static void main(String[] args) throws Exception {
-//        AdminClient adminClient = AdminSample.adminClient();
-//        System.out.println("adminClient : "+ adminClient);
+       AdminClient adminClient = AdminSample.adminClient();
+        System.out.println("adminClient : "+ adminClient);
         // 创建Topic实例
-//        createTopic();
+        createTopic();
         // 删除Topic实例
 //        delTopics();
         // 获取Topic列表
-//        topicLists();
+        topicLists();
         // 描述Topic
-        describeTopics();
+   //     describeTopics();
         // 修改Config
 //        alterConfig();
         // 查询Config
@@ -179,7 +179,7 @@ public class AdminSample {
      */
     public static AdminClient adminClient(){
         Properties properties = new Properties();
-        properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,"192.168.220.128:9092");
+        properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
 
         AdminClient adminClient = AdminClient.create(properties);
         return adminClient;

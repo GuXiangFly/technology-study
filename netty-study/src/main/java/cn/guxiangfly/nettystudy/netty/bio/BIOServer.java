@@ -40,6 +40,7 @@ public class BIOServer {
         }
     }
 
+
     public static void handler(Socket socket) {
         try {
             System.out.println("线程信息 id =" + Thread.currentThread().getId() + " 名字=" + Thread.currentThread().getName());

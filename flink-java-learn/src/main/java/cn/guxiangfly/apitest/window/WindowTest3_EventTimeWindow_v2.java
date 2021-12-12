@@ -39,6 +39,9 @@ public class WindowTest3_EventTimeWindow_v2 {
         }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<SensorReading>(Time.seconds(2)) {
             @Override
             public long extractTimestamp(SensorReading element) {
+               if (true){
+                   throw new RuntimeException("dddd");
+               }
                 return element.getTimestamp() * 1000L;
             }
         });

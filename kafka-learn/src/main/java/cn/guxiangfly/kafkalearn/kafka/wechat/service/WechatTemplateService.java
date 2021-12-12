@@ -1,8 +1,9 @@
 package cn.guxiangfly.kafkalearn.kafka.wechat.service;
 
 
+import cn.guxiangfly.kafkalearn.kafka.wechat.conf.WechatTemplateProperties;
 import com.alibaba.fastjson.JSONObject;
-import com.imooc.jiangzh.kafka.wechat.conf.WechatTemplateProperties;
+
 
 public interface WechatTemplateService {
 

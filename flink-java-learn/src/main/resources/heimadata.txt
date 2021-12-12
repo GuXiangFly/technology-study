@@ -1,0 +1,2 @@
+{"userID":"111","eventTime":"2021-05-10 12:12:12","eventType":"browse","productID":1234}
+{"userID":"112","eventTime":"2021-05-10 12:12:12","eventType":"browse","productID":12312124}

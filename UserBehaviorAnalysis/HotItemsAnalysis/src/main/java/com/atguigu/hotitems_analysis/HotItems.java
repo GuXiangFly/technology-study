@@ -47,16 +47,16 @@ public class HotItems {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         // 2. 读取数据，创建DataStream
-//        DataStream<String> inputStream = env.readTextFile("/Users/mtdp/Downloads/studyvedio/尚硅谷大数据技术之Flink（Java版）/4.代码/UserBehaviorAnalysis/HotItemsAnalysis/src/main/resources/UserBehavior.csv");
+        DataStream<String> inputStream = env.readTextFile("/Users/mtdp/Downloads/studyvedio/尚硅谷大数据技术之Flink（Java版）/4.代码/UserBehaviorAnalysis/HotItemsAnalysis/src/main/resources/UserBehavior.csv");
 
-        Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "localhost:9092");
-        properties.setProperty("group.id", "consumer");
-        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.setProperty("auto.offset.reset", "latest");
-
-        DataStream<String> inputStream = env.addSource(new FlinkKafkaConsumer<String>("hotitems", new SimpleStringSchema(), properties));
+//        Properties properties = new Properties();
+//        properties.setProperty("bootstrap.servers", "localhost:9092");
+//        properties.setProperty("group.id", "consumer");
+//        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+//        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+//        properties.setProperty("auto.offset.reset", "latest");
+//
+//        DataStream<String> inputStream = env.addSource(new FlinkKafkaConsumer<String>("hotitems", new SimpleStringSchema(), properties));
 
 
         // 3. 转换为POJO，分配时间戳和watermark

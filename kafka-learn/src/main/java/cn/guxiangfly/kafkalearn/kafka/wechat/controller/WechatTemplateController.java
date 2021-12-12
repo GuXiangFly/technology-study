@@ -1,15 +1,17 @@
 package cn.guxiangfly.kafkalearn.kafka.wechat.controller;
 
+import cn.guxiangfly.kafkalearn.kafka.wechat.common.BaseResponseVO;
+import cn.guxiangfly.kafkalearn.kafka.wechat.conf.WechatTemplateProperties;
+import cn.guxiangfly.kafkalearn.kafka.wechat.service.WechatTemplateService;
+import cn.guxiangfly.kafkalearn.kafka.wechat.utils.FileUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Maps;
-import com.imooc.jiangzh.kafka.wechat.common.BaseResponseVO;
-import com.imooc.jiangzh.kafka.wechat.conf.WechatTemplateProperties;
-import com.imooc.jiangzh.kafka.wechat.service.WechatTemplateService;
-import com.imooc.jiangzh.kafka.wechat.utils.FileUtils;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -27,7 +29,7 @@ public class WechatTemplateController {
 
         WechatTemplateProperties.WechatTemplate wechatTemplate = wechatTemplateService.getWechatTemplate();
 
-        Map<String, Object> result = Maps.newHashMap();
+        Map<String, Object> result = new HashMap<>();
         result.put("templateId",wechatTemplate.getTemplateId());
         result.put("template", FileUtils.readFile2JsonArray(wechatTemplate.getTemplateFilePath()));
 
