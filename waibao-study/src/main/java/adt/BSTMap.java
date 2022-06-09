@@ -11,7 +11,12 @@ public class BSTMap<K extends Comparable<K>, V > implements  Map<K, V>  {
 	}
 
 	public boolean containsKey(K key) {
-		V v = bst.find(key);
+		V v = null;
+		try {
+			v = bst.find(key);
+		} catch (KeyNotFoundException e) {
+			e.printStackTrace();
+		}
 		if (v== null){
 			return false;
 		}else {

@@ -18,6 +18,7 @@ import org.apache.flink.api.common.state.ReducingState;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.contrib.streaming.state.RocksDBStateBackend;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -32,6 +33,7 @@ public class StateTest2_KeyedState {
     public static void main(String[] args) throws Exception{
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
+        env.setStateBackend( new RocksDBStateBackend("file:///Users/mtdp/dev/softwareworkspace/flinkdevhome/savepointhome/StateTest1_OperatorState_V2_checkpoint"));
 
         // socket文本流
         DataStream<String> inputStream = env.socketTextStream("localhost", 7777);

@@ -58,5 +58,7 @@ public class ProcessTest3_SideOuptCase {
         highTempStream.getSideOutput(lowTempTag).print("low-temp");
 
         env.execute();
+
+
     }
 }

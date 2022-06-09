@@ -27,7 +27,6 @@ public class TableTest1_Example {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
         env.setStateBackend( new EmbeddedRocksDBStateBackend());
-
         // 1. 读取数据
         DataStreamSource<String> inputStream = env.readTextFile("/Users/mtdp/dev/ideaworkspace/guxiangwork/technology-study/flink-java-learn/src/main/resources/sensor.txt");
 
