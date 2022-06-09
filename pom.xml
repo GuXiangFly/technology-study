@@ -26,6 +26,8 @@
         <module>gmall0820-parent</module>
         <module>log-study</module>
         <module>pattern-study</module>
+        <module>dubbo-study</module>
+        <module>boot-myuser-service-consumer</module>
         <!--        <module>cat-study</module>-->
     </modules>
 
