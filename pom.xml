@@ -4,30 +4,32 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>spring-study</module>
-        <module>netty-study</module>
-        <module>kafka-learn</module>
-        <module>springboot-study</module>
-        <module>kylin-learn</module>
-        <module>jvm-learn</module>
-        <module>comel-study</module>
-        <module>zookeeper-learn</module>
-        <module>java-agent-learn</module>
-        <module>flink-learn</module>
-        <module>spark-learn</module>
-        <module>waibao-study</module>
-        <module>elasticsearch-study</module>
-        <module>springboot-15-study</module>
-        <module>current-limiting-study</module>
-        <module>springcloud-study</module>
-        <module>flink-java-learn</module>
-        <module>UserBehaviorAnalysis</module>
-        <module>spark3-learn</module>
-        <module>gmall0820-parent</module>
-        <module>log-study</module>
+<!--        <module>spring-study</module>-->
+<!--        <module>netty-study</module>-->
+<!--        <module>kafka-learn</module>-->
+<!--        <module>springboot-study</module>-->
+<!--        <module>kylin-learn</module>-->
+<!--        <module>jvm-learn</module>-->
+<!--        <module>comel-study</module>-->
+<!--        <module>zookeeper-learn</module>-->
+<!--        <module>java-agent-learn</module>-->
+<!--        <module>flink-learn</module>-->
+<!--        <module>spark-learn</module>-->
+<!--        <module>waibao-study</module>-->
+<!--        <module>elasticsearch-study</module>-->
+<!--        <module>springboot-15-study</module>-->
+<!--        <module>current-limiting-study</module>-->
+<!--        <module>springcloud-study</module>-->
+<!--        <module>flink-java-learn</module>-->
+<!--        <module>UserBehaviorAnalysis</module>-->
+<!--        <module>spark3-learn</module>-->
+<!--        <module>gmall0820-parent</module>-->
+<!--        <module>log-study</module>-->
         <module>pattern-study</module>
-        <module>dubbo-study</module>
-        <module>boot-myuser-service-consumer</module>
+<!--        <module>dubbo-study</module>-->
+        <module>springboot-study-starter</module>
+<!--        <module>springboot-study-starter/microboot-web</module>-->
+        <!--        <module>boot-myuser-service-consumer</module>-->
         <!--        <module>cat-study</module>-->
     </modules>
 

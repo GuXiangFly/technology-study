@@ -1,0 +1,19 @@
+#cn.guxiangfly.study.starter.dept
+#cn:
+#  guxiangfly:
+#    study:
+#      starter:
+#        dept:
+#          deptno: 111
+#          dname: guxiangfly
+#          loc: beijing
+#
+# org.springframework.boot.autoconfigure.EnableAutoConfiguration=cn.guxiangfly.study.starter.GuxiangflyConfiguration s
+cn:
+  guxiangfly:
+    study:
+      starter:
+        dept:
+          deptno: 222
+          dname: guxiangfly
+          loc: beijing
