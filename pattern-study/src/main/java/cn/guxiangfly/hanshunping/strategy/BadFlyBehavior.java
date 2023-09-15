@@ -1,4 +1,4 @@
-package cn.guxiangfly.hanshuping.strategy;
+package cn.guxiangfly.hanshunping.strategy;
 
 public class BadFlyBehavior implements FlyBehavior {
     @Override
