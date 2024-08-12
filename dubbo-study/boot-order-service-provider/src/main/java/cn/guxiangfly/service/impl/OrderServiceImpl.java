@@ -4,7 +4,7 @@ package cn.guxiangfly.service.impl;
 import cn.guxiangfly.bean.UserAddress;
 import cn.guxiangfly.service.OrderService;
 import cn.guxiangfly.service.UserService;
-import org.apache.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
         for (UserAddress address : addresses) {
             System.out.println(address.getUserAddress());
         }
+        System.out.println();
         return addresses;
     }
 }
