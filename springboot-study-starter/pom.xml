@@ -6,15 +6,18 @@
         <artifactId>technology-study</artifactId>
         <groupId>cn.guxiangfly</groupId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>springboot-study-starter</artifactId>
+    <groupId>cn.guxiangfly</groupId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <modules>
         <module>microboot-autoconfig-starter</module>
         <module>microboot-web</module>
     </modules>
-    <artifactId>springboot-study-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
