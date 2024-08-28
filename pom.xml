@@ -27,7 +27,7 @@
 <!--        <module>log-study</module>-->
         <module>pattern-study</module>
         <module>dubbo-study</module>
-        <module>springboot-study-starter</module>
+<!--        <module>springboot-study-starter</module>-->
 <!--        <module>springboot-study-starter/microboot-web</module>-->
         <!--        <module>boot-myuser-service-consumer</module>-->
         <!--        <module>cat-study</module>-->

@@ -1,4 +1,4 @@
-package cn.guxiangfly;
+package cn.guxiangfly.study.starter.register;
 
 import cn.guxiangfly.study.starter.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
