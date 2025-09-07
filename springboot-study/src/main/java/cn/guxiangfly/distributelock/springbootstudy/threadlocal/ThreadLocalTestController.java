@@ -52,7 +52,7 @@ public class ThreadLocalTestController {
 
         })));
 
-
+        TrafficCenterTransmittableThreadLocal.remove();
         return "success";
     }
 }

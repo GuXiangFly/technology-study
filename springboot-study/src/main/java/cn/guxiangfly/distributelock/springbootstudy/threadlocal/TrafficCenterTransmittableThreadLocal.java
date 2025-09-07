@@ -23,4 +23,9 @@ public class TrafficCenterTransmittableThreadLocal {
     public static String getWorkType() {
         return workTypeThreadLocal.get();
     }
+
+    public static void remove() {
+        workTypeThreadLocal.remove();
+        pojoBeanThreadLocal.remove();
+    }
 }

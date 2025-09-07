@@ -7,7 +7,7 @@
 <!--        <module>spring-study</module>-->
 <!--        <module>netty-study</module>-->
 <!--        <module>kafka-learn</module>-->
-        <module>springboot-study</module>
+<!--        <module>springboot-study</module>-->
 <!--        <module>kylin-learn</module>-->
 <!--        <module>jvm-learn</module>-->
 <!--        <module>comel-study</module>-->
@@ -25,8 +25,10 @@
 <!--        <module>spark3-learn</module>-->
 <!--        <module>gmall0820-parent</module>-->
 <!--        <module>log-study</module>-->
-        <module>pattern-study</module>
-<!--        <module>dubbo-study</module>-->
+<!--        <module>pattern-study</module>-->
+<!--        <module>ddd-study</module>-->
+        <module>java-ai-langchain4j</module>
+        <!--        <module>dubbo-study</module>-->
 <!--        <module>springboot-study-starter</module>-->
 <!--        <module>springboot-study-starter/microboot-web</module>-->
         <!--        <module>boot-myuser-service-consumer</module>-->
